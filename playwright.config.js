@@ -12,12 +12,13 @@ export default defineConfig({
     ['html', { open: 'always', outputFolder: 'playwright-report' }],
     ['json', { outputFile: 'test-results/results.json' }],
     ['list'],
+    ['allure-playwright']
   ],
   use: {
     headless: false,              // change to true for CI runs
    // viewport: { width: 1280, height: 720 },
    // ignoreHTTPSErrors: true,
-    //video: 'retain-on-failure',   // record video on test failure
+    //video: 'retain-on-failure',   // record video on test d
     screenshot: 'on',
     trace : 'retain-on-failure', // record trace on test failure
     //actionTimeout: 10000,         // max time for each action
