@@ -1,3 +1,6 @@
+// Import all functions from priceUtils.js
+import { convertPriceTextToNumber } from '../utils/priceUtils.js'
+
 export class CheckoutOverviewPage {
     constructor(page){
 
@@ -18,37 +21,41 @@ export class CheckoutOverviewPage {
     }
 
    async getProductsPrices()
-   {
+{
     const pricesText = await this.productsPrices.allTextContents()
-    
-    const prices = pricesText.map(price =>
-        Number(parseFloat(price.replace('$', '')).toFixed(2))
+
+    return pricesText.map(price =>
+        convertPriceTextToNumber(price)
     )
-    return prices
-    }
+}
+
 
     async itemTotal()
-    {
-        const totalText = await this.itemTotalLabel.textContent()
-        return Number(parseFloat(totalText.split('$')[1]).toFixed(2))
-        
-    }
+{
+    const totalText = await this.itemTotalLabel.textContent()
 
-    async taxAmount()
-    {
-        const tax = await this.tax.textContent()
-        return Number(parseFloat(tax.split('$')[1]).toFixed(2))
-    }
+    return convertPriceTextToNumber(
+        totalText.split('$')[1]
+    )
+}
 
     async totalAmountWithTax()
     {
         const totalAmount = await this.totalWithTax.textContent()
-        return Number(parseFloat(totalAmount.split('$')[1]).toFixed(2))
+        return convertPriceTextToNumber(
+            totalAmount.split('$')[1]
+        )
     }
 
     async clickOnFinish()
     {
         await this.finishButton.click()
+    }
+
+    async taxAmount() 
+    {
+    const taxText = await this.tax.textContent()
+    return convertPriceTextToNumber(taxText.split('$')[1])
     }
 
 

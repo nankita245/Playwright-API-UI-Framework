@@ -1,4 +1,5 @@
 import {test, expect } from '../../fixtures/pages.fixture.js'
+import * as priceUtils from '../../utils/priceUtils.js'
 import {cartPageData} from "../../test-data/sauceDemo/cartPageTestData.js"
 import {loginPageTestData} from "../../test-data/sauceDemo/loginPageTestData.js"
 import { productsPageData } from "../../test-data/sauceDemo/productsPageTestData.js"
@@ -34,12 +35,14 @@ test('Verify Item Total equals to total sum of all products prices',async ({ che
 {
     // Calculate total of Prices of all products
     const productsPrices = await checkoutOverviewPage.getProductsPrices()
-    const totalOfAllProducts = productsPrices.reduce((sum, price) => sum + price, 0)
+
+    const expectedItemTotal = priceUtils.calculateTotalPrice(productsPrices)
+   // const totalOfAllProducts = productsPrices.reduce((sum, price) => sum + price, 0)
     // console.log(totalOfAllProducts)
 
    //item total on overview page
    const itemTotaldisplayed = await checkoutOverviewPage.itemTotal()
-   await expect(totalOfAllProducts).toEqual(itemTotaldisplayed)
+   await expect(expectedItemTotal).toEqual(itemTotaldisplayed)
 })
 
 test('Verify Total amount equals to Item Total and Tax amount',async({checkoutOverviewPage})=>
@@ -47,14 +50,14 @@ test('Verify Total amount equals to Item Total and Tax amount',async({checkoutOv
 
     const itemTotal = await checkoutOverviewPage.itemTotal()
     const taxAmount = await checkoutOverviewPage.taxAmount()
-    const expectedTotal = itemTotal+taxAmount
+    const expectedFinalAmount = priceUtils.calculateFinalPrice(itemTotal, taxAmount)
     const actualTotal = await checkoutOverviewPage.totalAmountWithTax()
-    await expect(expectedTotal).toEqual(actualTotal)
+    await expect(expectedFinalAmount).toEqual(actualTotal)
 
 }
 )
 
-test('Finish Checkout', async({checkoutOverviewPage,page})=>
+test('Verify user can complete checkout successfully', async({checkoutOverviewPage,page})=>
 {
 
     await checkoutOverviewPage.clickOnFinish()
