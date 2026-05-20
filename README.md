@@ -1,5 +1,10 @@
 # Playwright API + UI Automation Framework
 
+![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
+![JavaScript](https://img.shields.io/badge/Language-JavaScript-yellow)
+![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-blue)
+![Allure](https://img.shields.io/badge/Reporting-Allure-orange)
+
 A scalable and maintainable end-to-end test automation framework built using Playwright with JavaScript.
 
 This framework supports:
@@ -32,10 +37,15 @@ This framework supports:
 # Framework Structure
 
 ```bash
-playwright-api-ui-framework
+Playwright-API-UI-Framework
 │
 ├── .github/workflows
 │   └── playwright.yml
+│
+├── assets
+│   └── screenshots
+│       ├── playwright-report.png
+│       └── allure-report.png
 │
 ├── config
 │
@@ -112,13 +122,13 @@ playwright-api-ui-framework
 ## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/playwright-api-ui-framework.git
+git clone https://github.com/nankita245/Playwright-API-UI-Framework.git
 ```
 
 ## Navigate to Project
 
 ```bash
-cd playwright-api-ui-framework
+cd Playwright-API-UI-Framework
 ```
 
 ## Install Dependencies
@@ -167,9 +177,27 @@ npx playwright test tests/UIAutomation/login.spec.js
 npx playwright test --headed
 ```
 
+## Run Tests in Debug Mode
+
+```bash
+npx playwright test --debug
+```
+
+## Run Tests in Specific Browser
+
+```bash
+npx playwright test --project=chromium
+```
+
 ---
 
-# Allure Reporting
+# Reporting
+
+## Open Playwright HTML Report
+
+```bash
+npx playwright show-report
+```
 
 ## Generate Allure Results
 
@@ -185,11 +213,23 @@ npx allure serve allure-results
 
 ---
 
+# Reports Preview
+
+## Playwright HTML Report
+
+![Playwright Report](assets/screenshots/playwright-report.png)
+
+## Allure Report
+
+![Allure Report](assets/screenshots/allure-report.png)
+
+---
+
 # GitHub Actions CI/CD
 
 This framework includes GitHub Actions integration for automated test execution.
 
-Features:
+### Features
 
 * Automated workflow execution
 * Parallel execution support
@@ -257,7 +297,7 @@ Planned improvements:
 
 This framework is designed with real-world automation practices used in enterprise-level projects.
 
-Focus areas:
+### Focus Areas
 
 * Maintainability
 * Scalability
@@ -278,11 +318,11 @@ Software Test Engineer | Playwright Automation | API Testing | UI Automation
 
 # Connect
 
-* GitHub: https://github.com/nankita245/QAops
+* GitHub: https://github.com/nankita245/Playwright-API-UI-Framework
 * LinkedIn: https://www.linkedin.com/in/ankita-nagotia-3354a0227/
 
 ---
 
 # License
 
-This project is intended for learning, portfolio, and automation practice purposes.
+This project is developed for learning, portfolio demonstration, and automation practice purposes.
