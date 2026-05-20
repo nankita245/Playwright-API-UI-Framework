@@ -1,36 +1,60 @@
-# Playwright API + UI Automation Framework
+# Hi, I'm Ankita Nagotia 👋
 
-![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
-![JavaScript](https://img.shields.io/badge/Language-JavaScript-yellow)
-![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-blue)
-![Allure](https://img.shields.io/badge/Reporting-Allure-orange)
+Lead QA Engineer with 11+ years of experience in software testing, quality engineering, and automation strategy.
 
-A scalable and maintainable end-to-end test automation framework built using Playwright with JavaScript.
+My background spans manual testing, functional validation, regression testing, API testing, and modern automation engineering using Playwright and JavaScript.
 
-This framework supports:
+I focus on building maintainable automation frameworks that improve release confidence, reduce repetitive testing effort, and support scalable quality workflows.
 
-* UI Automation
-* API Automation
-* Page Object Model (POM)
-* Allure Reporting
-* GitHub Actions CI/CD
-* Dynamic Test Data Handling
-* Reusable Utilities
-* Authentication Setup
-* Parallel Execution
+Currently focused on:
+- Playwright Automation
+- API Automation
+- Automation Framework Architecture
+- CI/CD-based Quality Workflows
+- Scalable Test Design
+- Modern SDET Practices
 
 ---
 
-# Tech Stack
+# About Me
 
-| Technology        | Purpose                  |
-| ----------------- | ------------------------ |
-| Playwright        | UI & API Automation      |
-| JavaScript        | Programming Language     |
-| Node.js           | Runtime Environment      |
-| Allure Report     | Advanced Reporting       |
-| GitHub Actions    | CI/CD Integration        |
-| Page Object Model | Framework Design Pattern |
+Over the years, I have worked extensively in:
+- Functional Testing
+- Regression Testing
+- UI Validation
+- API Validation
+- End-to-End Testing
+- Test Planning
+- Defect Lifecycle Management
+- Agile QA Processes
+
+As testing evolved, I started transitioning deeper into automation engineering with a focus on building reusable and maintainable automation systems rather than isolated test scripts.
+
+My goal is to combine strong product quality understanding with modern automation engineering practices.
+
+---
+
+# Current Project
+
+# Playwright API + UI Automation Framework
+
+A scalable automation framework designed for:
+- UI Automation
+- API Automation
+- Reusable Test Architecture
+- Parallel Execution
+- CI/CD Integration
+- Reporting & Debugging
+
+## Tech Stack
+- Playwright
+- JavaScript
+- Node.js
+- GitHub Actions
+- Allure Reporting
+
+Repository:
+👉 https://github.com/nankita245/Playwright-API-UI-Framework
 
 ---
 
@@ -79,137 +103,85 @@ Playwright-API-UI-Framework
 
 ---
 
-# Key Features
+# Engineering Focus Areas
+
+This framework is being designed with emphasis on:
+
+## Maintainability
+- Reusable page objects
+- Modular utilities
+- Centralized test data
+- Fixture-based setup
+
+## Scalability
+- Parallel execution support
+- Reusable authentication state
+- Organized folder structure
+- Separated API and UI layers
+
+## Stability
+- Trace collection
+- Screenshot capture on failures
+- Video recording on failures
+- Stable locator strategies
+
+## Debugging Efficiency
+- Playwright traces
+- Allure reporting
+- HTML execution reports
+- Failure analysis support
+
+---
+
+# Automation Skills
 
 ## UI Automation
-
-* Login workflow validation
-* Product page validations
-* Checkout flow automation
-* Cart functionality testing
-* End-to-end purchase flow
+- Playwright
+- End-to-End Testing
+- Cross-browser Testing
+- Regression Automation
 
 ## API Automation
+- GET / POST / PUT / PATCH validation
+- Request & Response validation
+- Dynamic request payload handling
+- API workflow testing
 
-* GET API Testing
-* POST API Testing
-* PUT API Testing
-* PATCH API Testing
-* Query Parameter Validation
-* Static & Dynamic Request Body Validation
+## Framework Development
+- Page Object Model (POM)
+- Fixture-Based Architecture
+- Utility Abstraction
+- Authentication State Handling
+- Reusable Components
 
-## Reporting
-
-* Playwright HTML Reports
-* Allure Reports
-* Failure Screenshots
-* Trace Collection
-* Video Recording on Failures
-
-## Framework Capabilities
-
-* Reusable Page Objects
-* Centralized Test Data Management
-* Custom Utility Functions
-* Authentication State Handling
-* Scalable Folder Structure
-* CI/CD Ready Framework
+## CI/CD & Reporting
+- GitHub Actions
+- Allure Reports
+- Playwright HTML Reports
 
 ---
 
-# Installation
+# Framework Design Decisions
 
-## Clone Repository
+Some important design choices used in the framework:
 
-```bash
-git clone https://github.com/nankita245/Playwright-API-UI-Framework.git
-```
-
-## Navigate to Project
-
-```bash
-cd Playwright-API-UI-Framework
-```
-
-## Install Dependencies
-
-```bash
-npm install
-```
-
-## Install Playwright Browsers
-
-```bash
-npx playwright install
-```
+- Authentication state reuse minimizes repeated login execution.
+- Fixtures help create reusable setup layers and cleaner test structure.
+- Utility functions centralize reusable business logic.
+- API and UI tests are separated for better maintainability.
+- Reporting integrations improve debugging and failure analysis.
+- Stable locator practices help reduce flaky test behavior.
 
 ---
 
-# Running Tests
+# Problems This Framework Solves
 
-## Run All Tests
-
-```bash
-npx playwright test
-```
-
-## Run UI Tests
-
-```bash
-npx playwright test tests/UIAutomation
-```
-
-## Run API Tests
-
-```bash
-npx playwright test tests/APIAutomation
-```
-
-## Run Specific Test File
-
-```bash
-npx playwright test tests/UIAutomation/login.spec.js
-```
-
-## Run Tests in Headed Mode
-
-```bash
-npx playwright test --headed
-```
-
-## Run Tests in Debug Mode
-
-```bash
-npx playwright test --debug
-```
-
-## Run Tests in Specific Browser
-
-```bash
-npx playwright test --project=chromium
-```
-
----
-
-# Reporting
-
-## Open Playwright HTML Report
-
-```bash
-npx playwright show-report
-```
-
-## Generate Allure Results
-
-```bash
-npx playwright test
-```
-
-## Open Allure Report
-
-```bash
-npx allure serve allure-results
-```
+- Reduces repetitive test setup effort
+- Improves test maintainability
+- Supports reusable automation workflows
+- Simplifies debugging using traces and reports
+- Organizes automation structure for scalability
+- Supports parallel execution for faster feedback
 
 ---
 
@@ -217,112 +189,81 @@ npx allure serve allure-results
 
 ## Playwright HTML Report
 
-![Playwright Report](assets/screenshots/playwright-report.png)
+![Playwright Report](./assets/screenshots/playwright-report.png)
 
 ## Allure Report
 
-![Allure Report](assets/screenshots/allure-report.png)
+![Allure Report](./assets/screenshots/allure-report.png)
 
 ---
 
-# GitHub Actions CI/CD
+# Current Learning & Engineering Goals
 
-This framework includes GitHub Actions integration for automated test execution.
+I’m actively strengthening my capabilities in:
+- Advanced Playwright architecture
+- API framework design
+- Scalable automation patterns
+- CI/CD automation workflows
+- Modern SDET engineering practices
 
-### Features
-
-* Automated workflow execution
-* Parallel execution support
-* CI-ready configuration
-* Easy integration with pipelines
-
----
-
-# Design Patterns Used
-
-## Page Object Model (POM)
-
-The framework follows the Page Object Model design pattern to improve:
-
-* Reusability
-* Maintainability
-* Readability
-* Scalability
-
-## Fixture-Based Architecture
-
-Reusable fixtures are implemented for:
-
-* Common setup
-* Page initialization
-* Test optimization
+Long-term focus areas include:
+- Docker-based execution
+- Cloud execution platforms
+- Advanced API validation
+- Performance-focused automation workflows
 
 ---
 
-# Utilities Included
+# Career Direction
 
-| Utility                | Purpose            |
-| ---------------------- | ------------------ |
-| randomDataGenerator.js | Dynamic test data  |
-| priceUtils.js          | Price calculations |
+I’m interested in remote SDET and QA Automation Engineering opportunities where I can contribute to:
+- scalable automation systems
+- quality-focused engineering culture
+- maintainable testing architecture
+- automation strategy and framework design
 
----
-
-# Reporting Features
-
-The framework captures:
-
-* Screenshots on failure
-* Videos on failure
-* Execution traces
-* Detailed step execution logs
-* Allure visual reports
+I particularly enjoy solving problems related to:
+- framework maintainability
+- debugging efficiency
+- reusable automation patterns
+- execution optimization
 
 ---
 
-# Future Enhancements
+# Featured Repository
 
-Planned improvements:
+## Playwright API + UI Automation Framework
 
-* Docker Integration
-* Jenkins Integration
-* Cross-browser cloud execution
-* Database validation support
-* Environment-based configuration
-* Performance testing integration
+Features:
+- UI + API Automation
+- Reusable Fixtures
+- POM Architecture
+- GitHub Actions CI/CD
+- Allure Reporting
+- Parallel Execution
+- Failure Traces & Videos
 
----
-
-# Why This Framework?
-
-This framework is designed with real-world automation practices used in enterprise-level projects.
-
-### Focus Areas
-
-* Maintainability
-* Scalability
-* Reusability
-* Clean code architecture
-* CI/CD readiness
-* Professional reporting
+🔗 Repository:
+https://github.com/nankita245/Playwright-API-UI-Framework
 
 ---
 
-# Author
+# Connect With Me
 
-Ankita Nagotia
+## LinkedIn
+https://www.linkedin.com/in/ankita-nagotia-3354a0227/
 
-Software Test Engineer | Playwright Automation | API Testing | UI Automation
-
----
-
-# Connect
-
-* GitHub: https://github.com/nankita245/Playwright-API-UI-Framework
-* LinkedIn: https://www.linkedin.com/in/ankita-nagotia-3354a0227/
+## GitHub
+https://github.com/nankita245
 
 ---
 
-# License
+# Philosophy
 
-This project is developed for learning, portfolio demonstration, and automation practice purposes.
+Good automation is not just about automating test cases.
+
+It’s about building maintainable systems that:
+- improve release confidence
+- reduce engineering friction
+- support faster delivery
+- help teams scale quality efficiently
