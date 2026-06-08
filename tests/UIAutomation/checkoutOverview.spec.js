@@ -19,7 +19,7 @@ test.beforeEach('Navigate to checkout Overview',async({page,loginPage,productsPa
 }
 )
 
-test('Verify number of products added to cart and on Overview Page are same', async({checkoutOverviewPage,productsPage})=>
+test('@WebTest Verify number of products added to cart and on Overview Page are same', async({checkoutOverviewPage,productsPage})=>
 {
   //products on overview page
   const productsOnOverviewPage = await checkoutOverviewPage.totalProductsOnCheckout()   
@@ -31,7 +31,7 @@ test('Verify number of products added to cart and on Overview Page are same', as
  
 })
 
-test('Verify Item Total equals to total sum of all products prices',async ({ checkoutOverviewPage }) =>
+test('@WebTest Verify Item Total equals to total sum of all products prices',async ({ checkoutOverviewPage }) =>
 {
     // Calculate total of Prices of all products
     const productsPrices = await checkoutOverviewPage.getProductsPrices()
@@ -45,7 +45,7 @@ test('Verify Item Total equals to total sum of all products prices',async ({ che
    await expect(expectedItemTotal).toEqual(itemTotaldisplayed)
 })
 
-test('Verify Total amount equals to Item Total and Tax amount',async({checkoutOverviewPage})=>
+test('@WebTest Verify Total amount equals to Item Total and Tax amount',async({checkoutOverviewPage})=>
 {
 
     const itemTotal = await checkoutOverviewPage.itemTotal()
@@ -57,7 +57,7 @@ test('Verify Total amount equals to Item Total and Tax amount',async({checkoutOv
 }
 )
 
-test('Verify user can complete checkout successfully', async({checkoutOverviewPage,page})=>
+test('@WebTest Verify user can complete checkout successfully', async({checkoutOverviewPage,page})=>
 {
 
     await checkoutOverviewPage.clickOnFinish()

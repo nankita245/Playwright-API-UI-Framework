@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test'
 import { postAPIRequestData } from '../../test-data/restfulBooker/postAPIRequestData'
 
-test('Test Post api request using static request body',async ({page,request})=>
+test('@APItest Test Post api request using static request body',async ({page,request})=>
 
 {
     const postApiResponse = await request.post('https://restful-booker.herokuapp.com/booking',

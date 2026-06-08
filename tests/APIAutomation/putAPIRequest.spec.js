@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test'
 import { generateBookingData } from '../../utils/randomDataGenerator.js'
 
 
-test('Create Put API Request',async ({page,request})=>
+test('@APItest Create Put API Request',async ({page,request})=>
 
 {
     

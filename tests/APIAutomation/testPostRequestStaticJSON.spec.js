@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test'
 import bookingApiRequestBody from '../../test-data/restfulBooker/postAPIRequestData.json' //data directly gets saved to constant
 
-test('Test Post api request using static JSON File',async ({page,request})=>
+test('@Test Post api request using static JSON File',async ({page,request})=>
 
 {
     const postApiResponse = await request.post('https://restful-booker.herokuapp.com/booking',

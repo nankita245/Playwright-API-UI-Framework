@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test'
 import {faker} from '@faker-js/faker'
 import { DateTime } from 'luxon'
 
-test('Test Get api request',async ({page,request})=>
+test('@APItest APItestTest Get api request',async ({page,request})=>
 
 {
     const firstName = faker.person.firstName()

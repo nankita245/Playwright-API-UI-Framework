@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test'
 import { generateBookingData } from '../../utils/randomDataGenerator.js'
 
-test('Test Post api request using Dynamic request body',async ({page,request})=>
+test('@APItest Test Post api request using Dynamic request body',async ({page,request})=>
 
 {
     const bookingData = generateBookingData()

@@ -5,7 +5,7 @@ import patchRequestData from '../../test-data/restfulBooker/patchRequestBodyData
 
 
 
-test('Test Patch API Request',async ({page,request})=>
+test('@APItest Test Patch API Request',async ({page,request})=>
 
 {
     const bookingData = generateBookingData()

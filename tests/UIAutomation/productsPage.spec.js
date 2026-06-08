@@ -25,7 +25,7 @@ test.describe('Sorting Tests: ', ()=>
 }
 )
 
-test('Sorting Products from Z to A', async({productsPage})=>
+test('@WebTest Sorting Products from Z to A', async({productsPage})=>
 {
     await productsPage.selectSortOption(productsPageData.sortZtoA.optionValue)
     await productsPage.page.waitForLoadState('networkidle');
@@ -38,7 +38,7 @@ test('Sorting Products from Z to A', async({productsPage})=>
    expect(names).toEqual(sortedNames);  
 })
 
-test('Sorting Products from Price High to Low', async({productsPage})=>
+test('@WebTest Sorting Products from Price High to Low', async({productsPage})=>
 {
     await productsPage.selectSortOption(productsPageData.sortHighToLow.optionValue)
    // await productsPage.page.waitForLoadState('networkidle');
@@ -52,7 +52,7 @@ test('Sorting Products from Price High to Low', async({productsPage})=>
 
 )
 
-test('Sorting Products from Price Low to High', async({productsPage})=>
+test('@WebTest Sorting Products from Price Low to High', async({productsPage})=>
 {
     await productsPage.selectSortOption(productsPageData.sortLowToHigh.optionValue)
    // await productsPage.page.waitForLoadState('networkidle')
@@ -67,7 +67,7 @@ test('Sorting Products from Price Low to High', async({productsPage})=>
 }
 )
 
-test('Count Total Number of Products', async({productsPage})=>
+test('@WebTest Count Total Number of Products', async({productsPage})=>
 {
 
     const totalProducts = await productsPage.countTotalProducts()
@@ -78,7 +78,7 @@ test('Count Total Number of Products', async({productsPage})=>
 ) 
 
 
-test('Add Multiple Products to Cart and Validate cart bage count',async({productsPage})=>
+test('@WebTest Add Multiple Products to Cart and Validate cart bage count',async({productsPage})=>
 {
     const expectedCount = productsPageData.totalProductToAdd.totalToCart
     await productsPage.addProductsToCart(productsPageData.totalProductToAdd.totalToCart)
@@ -89,7 +89,7 @@ test('Add Multiple Products to Cart and Validate cart bage count',async({product
 }
 ),
 
-test('Remove Items from Cart', async({productsPage,yourCartPage,page})=>
+test('@WebTest Remove Items from Cart', async({productsPage,yourCartPage,page})=>
 {
     
     await productsPage.addProductsToCart(productsPageData.totalProductToAdd.totalToCart)
@@ -103,7 +103,7 @@ test('Remove Items from Cart', async({productsPage,yourCartPage,page})=>
 
 test.describe('Test Cart Persistence',async()=>
 {
-    test('Verify Cart Persistence on Page Refresh',async({productsPage,page})=>
+    test('@WebTest Verify Cart Persistence on Page Refresh',async({productsPage,page})=>
 {
 
     await productsPage.addProductsToCart(productsPageData.totalProductToAdd.totalToCart)
@@ -129,7 +129,7 @@ test.describe('Test Cart Persistence',async()=>
 
 )
    
-   test('Test Continue Shopping Button', async({productsPage,yourCartPage,page})=>
+   test('@WebTest Test Continue Shopping Button', async({productsPage,yourCartPage,page})=>
 {
    await productsPage.addProductsToCart(productsPageData.totalProductToAdd.totalToCart)
    await productsPage.clickOnCart()

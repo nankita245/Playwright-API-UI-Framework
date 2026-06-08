@@ -6,7 +6,7 @@ test.beforeEach('Navigate to URL', async ({loginPage})=>
     await loginPage.navigateToUrl()
 })
 
-test('Login with valid Credentials', async({loginPage,productsPage})=>
+test('@WebTest Login with valid Credentials', async({loginPage,productsPage})=>
 {
     
     await loginPage.loginToApplication(loginPageData.validUser.userName,loginPageData.validUser.password)
@@ -16,7 +16,7 @@ test('Login with valid Credentials', async({loginPage,productsPage})=>
 test.describe('Invalid Login Scenarios', ()=>
 {
 loginPageData.invalidUsers.forEach((data)=>{
-test(`Login fails | user: "${data.userName}" | password: "${data.password}"`, async({loginPage,page})=>
+test(`@WebTest Login fails | user: "${data.userName}" | password: "${data.password}"`, async({loginPage,page})=>
 {
     
     await loginPage.loginToApplication(data.userName,data.password)
@@ -26,7 +26,7 @@ test(`Login fails | user: "${data.userName}" | password: "${data.password}"`, as
 )
 })
 
-test('Check Login fail of Locked out user', async({loginPage,page})=>
+test('@WebTest Check Login fail of Locked out user', async({loginPage,page})=>
 {
 
     
@@ -36,7 +36,7 @@ test('Check Login fail of Locked out user', async({loginPage,page})=>
 }
 )
 
-test('Check SQL Injection handling', async ({loginPage,page})=>
+test('@WebTest Check SQL Injection handling', async ({loginPage,page})=>
 {
     
     await loginPage.loginToApplication(loginPageData.sqlInjectionUser.userName,loginPageData.sqlInjectionUser.password)
@@ -45,7 +45,7 @@ test('Check SQL Injection handling', async ({loginPage,page})=>
 }
 )
 
-test('Verify session persistance on new Tab', async({loginPage,productsPage,context})=>
+test('@WebTest Verify session persistance on new Tab', async({loginPage,productsPage,context})=>
 {
     
     await loginPage.loginToApplication(loginPageData.validUser.userName,loginPageData.validUser.password)
@@ -59,7 +59,7 @@ test('Verify session persistance on new Tab', async({loginPage,productsPage,cont
 }
 )
 
-test('Verify session persists after reload', async ({ loginPage, page, productsPage }) => {
+test('@WebTest Verify session persists after reload', async ({ loginPage, page, productsPage }) => {
 
   
 

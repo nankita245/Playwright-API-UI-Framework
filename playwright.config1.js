@@ -33,24 +33,31 @@ export default defineConfig({
   },
 
   {
-    name: 'chromium',
-    use: {
-      ...devices['Desktop Chrome'],
-      storageState: 'playwright/.auth/user.json',
-    },
-
-    dependencies: ['setup'],
+  name: 'webkit',
+  use: {
+    ...devices['Desktop Safari'],
+    storageState: 'playwright/.auth/user.json',
   },
+  dependencies: ['setup'],
+},
+    
 ],
+  // {
+  //   name: 'chromium',
+  //   use: {
+  //     ...devices['Desktop Chrome'],
+  //     storageState: 'playwright/.auth/user.json',
+  //   },
 
-  //   {
-  //     name: 'firefox',
-  //     use: { ...devices['Desktop Firefox'] },
-  //   },
-  //   {
-  //     name: 'webkit',
-  //     use: { ...devices['Desktop Safari'] },
-  //   },
+  //   dependencies: ['setup'],
+  // },
+//],
+
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+    
   
   // // Optional: retries on CI
   // retries: process.env.CI ? 2 : 0,

@@ -15,7 +15,7 @@ test.beforeEach('Add Product to Cart',async ({loginPage,productsPage,page,yourCa
 test.describe('Checkout Validation Errors',()=>
 {
 
-    test('Check Error on empty name',async ({ customerInformation,page})=>
+    test('@WebTest Check Error on empty name',async ({ customerInformation,page})=>
     {
      
       await  customerInformation.fillInformation(checkoutPageData.emptyName.Name,checkoutPageData.emptyName.lastName,checkoutPageData.emptyName.zipCode)
@@ -23,14 +23,14 @@ test.describe('Checkout Validation Errors',()=>
       await expect(page.getByText(checkoutPageData.emptyName.error)).toBeVisible()
     })
 
-    test('Check Error on Empty Last Name',async({ customerInformation,page})=>
+    test('@WebTest Check Error on Empty Last Name',async({ customerInformation,page})=>
     {
       await  customerInformation.fillInformation(checkoutPageData.emptyLastname.Name,checkoutPageData.emptyLastname.lastName,checkoutPageData.emptyLastname.zipCode)
       await  customerInformation.continueCheckout()  
       await expect(page.getByText(checkoutPageData.emptyLastname.error)).toBeVisible()
     }
     )
-    test('Check Error on Empty Zip Code',async({ customerInformation,page})=>
+    test('@WebTest Check Error on Empty Zip Code',async({ customerInformation,page})=>
     {
    
       await  customerInformation.fillInformation(checkoutPageData.emptyZipCode.Name,checkoutPageData.emptyZipCode.lastName,checkoutPageData.emptyZipCode.zipCode)
@@ -39,7 +39,7 @@ test.describe('Checkout Validation Errors',()=>
     }
     )
     
-    test('Test functionality of Cancel Checkout button', async({customerInformation,page})=>
+    test('@WebTest Test functionality of Cancel Checkout button', async({customerInformation,page})=>
     {
      
       await  customerInformation.fillInformation(checkoutPageData.validData.Name,checkoutPageData.validData.lastName,checkoutPageData.validData.zipCode)
@@ -48,7 +48,7 @@ test.describe('Checkout Validation Errors',()=>
     }
     )
     
-    test('Test functionality of Continue button on Customer Information page',async({customerInformation,page})=>
+    test('@WebTest Test functionality of Continue button on Customer Information page',async({customerInformation,page})=>
     {
       
       await  customerInformation.fillInformation(checkoutPageData.validData.Name,checkoutPageData.validData.lastName,checkoutPageData.validData.zipCode)
