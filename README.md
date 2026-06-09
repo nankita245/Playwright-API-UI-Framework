@@ -185,6 +185,20 @@ Some important design choices used in the framework:
 
 ---
 
+## CI/CD with Jenkins
+
+![Jenkins Build Success](assets/screenshots/jenkins-success.png)
+
+Jenkins executes Playwright test suites and supports parameterized test runs.
+
+## Test Execution
+
+![Playwright Test Execution](assets/screenshots/test-execution.png)
+
+35 automated UI tests executed successfully in parallel.
+
+---
+
 # Reports Preview
 
 ## Playwright HTML Report
