@@ -188,13 +188,6 @@ npm run allureGenerate
 npm run allureOpen
 ```
 
----
-
-# 🧪 Test Execution
-
-Playwright executes tests in parallel to provide faster feedback and reduce overall execution time.
-
-![Playwright Test Execution](assets/screenshots/test-execution.png)
 
 ---
 
@@ -215,7 +208,7 @@ Jenkins pipeline is configured to:
 
 ### Jenkins Test Execution
 
-![Jenkins Test Execution](./assets/screenshots/jenkins-test-execution.png)
+![Jenkins Test Execution](assets/screenshots/test-execution.png)
 
 Parameterized Jenkins jobs allow selective execution of:
 
