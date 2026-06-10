@@ -219,15 +219,17 @@ Parameterized Jenkins jobs allow selective execution of:
 Supported execution commands:
 
 ```bash
-| Command | Purpose |
-|----------|----------|
-| npm run regression | Run complete regression suite |
-| npm run webTest | Run UI automation tests |
-| npm run apiTest | Run API automation tests |
-| npm run chromiumTest | Execute tests on Chromium |
-| npm run safariTest | Execute tests on WebKit/Safari |
-| npm run allureGenerate | Generate Allure Report |
-| npm run allureOpen | Open Allure Report |
+## ⚡ Test Execution Commands
+
+| Script | Description | Browser/Scope |
+|---------|-------------|---------------|
+| `npm run regression` | Executes complete regression suite | UI + API |
+| `npm run webTest` | Executes UI automation tests | Chromium |
+| `npm run apiTest` | Executes API automation tests | API |
+| `npm run chromiumTest` | Executes browser-specific tests | Chromium |
+| `npm run safariTest` | Executes browser-specific tests | WebKit/Safari |
+| `npm run allureGenerate` | Generates Allure HTML report | Reporting |
+| `npm run allureOpen` | Opens generated Allure report | Reporting |
 ```
 
 ---
