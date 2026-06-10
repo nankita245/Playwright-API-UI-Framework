@@ -217,7 +217,6 @@ Parameterized Jenkins jobs allow selective execution of:
 
 Supported execution commands:
 
-```bash
 ### Supported Jenkins Execution Commands
 
 | Script | Description | Scope |
@@ -230,7 +229,6 @@ Supported execution commands:
 | `npm run allureGenerate` | Generates Allure report | Reporting |
 | `npm run allureOpen` | Opens Allure report | Reporting |
 
-```
 
 ---
 
