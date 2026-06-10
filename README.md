@@ -56,7 +56,8 @@ A scalable automation framework built using Playwright and JavaScript for UI and
 | CI/CD | Jenkins |
 | Browsers | Chromium, WebKit |
 | Reporting | Playwright HTML + Allure |
-| Execution | Parallel Test Execution |
+| Execution Strategy | Parallel Test Execution |
+| Browser Coverage | Chromium, WebKit |
 | Authentication | State Reuse |
 | Debugging | Traces, Screenshots, Videos |
 
@@ -79,8 +80,6 @@ A scalable automation framework built using Playwright and JavaScript for UI and
 ```bash
 Playwright-API-UI-Framework
 │
-├── .github/workflows
-│   └── playwright.yml
 │
 ├── assets/screenshots
 │   ├── allure-report.png
@@ -128,7 +127,7 @@ Centralized page actions improve maintainability and reduce code duplication.
 
 Reusable setup layers keep tests clean and scalable.
 
-## Authentication State Reuse
+## Authentication State Management
 
 Authentication is executed once and reused across tests to reduce execution time.
 
@@ -220,11 +219,15 @@ Parameterized Jenkins jobs allow selective execution of:
 Supported execution commands:
 
 ```bash
-npm run regression
-npm run webTest
-npm run apiTest
-npm run chromiumTest
-npm run safariTest
+| Command | Purpose |
+|----------|----------|
+| npm run regression | Run complete regression suite |
+| npm run webTest | Run UI automation tests |
+| npm run apiTest | Run API automation tests |
+| npm run chromiumTest | Execute tests on Chromium |
+| npm run safariTest | Execute tests on WebKit/Safari |
+| npm run allureGenerate | Generate Allure Report |
+| npm run allureOpen | Open Allure Report |
 ```
 
 ---
