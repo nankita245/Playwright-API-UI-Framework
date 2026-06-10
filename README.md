@@ -54,7 +54,6 @@ A scalable automation framework built using Playwright and JavaScript for UI and
 | Test Types | UI + API Automation |
 | Architecture | Page Object Model + Fixtures |
 | CI/CD | Jenkins |
-| Browsers | Chromium, WebKit |
 | Reporting | Playwright HTML + Allure |
 | Execution Strategy | Parallel Test Execution |
 | Browser Coverage | Chromium, WebKit |
@@ -219,17 +218,18 @@ Parameterized Jenkins jobs allow selective execution of:
 Supported execution commands:
 
 ```bash
-## ⚡ Test Execution Commands
+### Supported Jenkins Execution Commands
 
-| Script | Description | Browser/Scope |
-|---------|-------------|---------------|
+| Script | Description | Scope |
+|---------|-------------|--------|
 | `npm run regression` | Executes complete regression suite | UI + API |
-| `npm run webTest` | Executes UI automation tests | Chromium |
+| `npm run webTest` | Executes UI automation tests | UI |
 | `npm run apiTest` | Executes API automation tests | API |
-| `npm run chromiumTest` | Executes browser-specific tests | Chromium |
-| `npm run safariTest` | Executes browser-specific tests | WebKit/Safari |
-| `npm run allureGenerate` | Generates Allure HTML report | Reporting |
-| `npm run allureOpen` | Opens generated Allure report | Reporting |
+| `npm run chromiumTest` | Executes tests on Chromium browser | Chromium |
+| `npm run safariTest` | Executes tests on WebKit/Safari browser | WebKit |
+| `npm run allureGenerate` | Generates Allure report | Reporting |
+| `npm run allureOpen` | Opens Allure report | Reporting |
+
 ```
 
 ---
