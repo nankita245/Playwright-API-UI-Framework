@@ -1,64 +1,80 @@
-# Hi, I'm Ankita Nagotia 👋
+![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-red)
+![Allure](https://img.shields.io/badge/Allure-Reporting-orange)
+![Chromium](https://img.shields.io/badge/Chromium-Supported-brightgreen)
+![WebKit](https://img.shields.io/badge/WebKit-Supported-blue)
 
-Lead QA Engineer with 11+ years of experience in software testing, quality engineering, and automation strategy.
+# 🚀 Playwright API + UI Automation Framework
 
-My background spans manual testing, functional validation, regression testing, API testing, and modern automation engineering using Playwright and JavaScript.
-
-I focus on building maintainable automation frameworks that improve release confidence, reduce repetitive testing effort, and support scalable quality workflows.
-
-Currently focused on:
-- Playwright Automation
-- API Automation
-- Automation Framework Architecture
-- CI/CD-based Quality Workflows
-- Scalable Test Design
-- Modern SDET Practices
+A scalable automation framework built using Playwright and JavaScript for UI and API testing. The framework follows modern automation engineering practices with reusable architecture, authentication state management, cross-browser execution, CI/CD integration, and rich reporting.
 
 ---
 
-# About Me
+## 📌 Key Features
 
-Over the years, I have worked extensively in:
-- Functional Testing
-- Regression Testing
-- UI Validation
-- API Validation
-- End-to-End Testing
-- Test Planning
-- Defect Lifecycle Management
-- Agile QA Processes
+### UI Automation
 
-As testing evolved, I started transitioning deeper into automation engineering with a focus on building reusable and maintainable automation systems rather than isolated test scripts.
+* End-to-End Testing
+* Cross-Browser Testing
+* Parallel Execution
+* Authentication State Reuse
+* Page Object Model (POM)
 
-My goal is to combine strong product quality understanding with modern automation engineering practices.
+### API Automation
 
----
+* GET Validation
+* POST Validation
+* PUT Validation
+* PATCH Validation
+* Request Validation
+* Response Validation
+* API Workflow Testing
 
-# Current Project
+### Reporting & Debugging
 
-# Playwright API + UI Automation Framework
+* Playwright HTML Reports
+* Allure Reports
+* Screenshots on Failure
+* Trace Collection
+* Video Recording on Failure
 
-A scalable automation framework designed for:
-- UI Automation
-- API Automation
-- Reusable Test Architecture
-- Parallel Execution
-- CI/CD Integration
-- Reporting & Debugging
+### CI/CD
 
-## Tech Stack
-- Playwright
-- JavaScript
-- Node.js
-- GitHub Actions
-- Allure Reporting
-
-Repository:
-👉 https://github.com/nankita245/Playwright-API-UI-Framework
+* Jenkins Integration
+* Automated Execution
+* Build Monitoring
 
 ---
 
-# Framework Structure
+# 📈 Framework Statistics
+
+| Metric | Details |
+|----------|----------|
+| Test Types | UI + API Automation |
+| Architecture | Page Object Model + Fixtures |
+| CI/CD | Jenkins |
+| Browsers | Chromium, WebKit |
+| Reporting | Playwright HTML + Allure |
+| Execution | Parallel Test Execution |
+| Authentication | State Reuse |
+| Debugging | Traces, Screenshots, Videos |
+
+---
+
+## 🛠 Tech Stack
+
+| Technology     | Purpose               |
+| -------------- | --------------------- |
+| Playwright     | UI & API Automation   |
+| JavaScript     | Framework Development |
+| Node.js        | Runtime Environment   |
+| Jenkins        | CI/CD                 |
+| Allure         | Reporting             |
+
+---
+
+## 📂 Framework Structure
 
 ```bash
 Playwright-API-UI-Framework
@@ -66,12 +82,11 @@ Playwright-API-UI-Framework
 ├── .github/workflows
 │   └── playwright.yml
 │
-├── assets
-│   └── screenshots
-│       ├── playwright-report.png
-│       └── allure-report.png
-│
-├── config
+├── assets/screenshots
+│   ├── allure-report.png
+│   ├── jenkins-success.png
+│   ├── playwright-report.png
+│   └── test-execution.png
 │
 ├── fixtures
 │   └── pages.fixture.js
@@ -84,8 +99,6 @@ Playwright-API-UI-Framework
 │   └── yourCartPage.js
 │
 ├── test-data
-│   ├── sauceDemo
-│   └── restfullBooker
 │
 ├── tests
 │   ├── UIAutomation
@@ -96,188 +109,186 @@ Playwright-API-UI-Framework
 │   ├── randomDataGenerator.js
 │   └── priceUtils.js
 │
-├── playwright.config.js
+├── playwright.chromium.config.js
+├── playwright.webkit.config.js
+├── playwright.service.config.js
 ├── package.json
-└── .gitignore
+└── README.md
 ```
 
 ---
 
-# Engineering Focus Areas
+# 🏗 Framework Design
 
-This framework is being designed with emphasis on:
+## Page Object Model (POM)
 
-## Maintainability
-- Reusable page objects
-- Modular utilities
-- Centralized test data
-- Fixture-based setup
+Centralized page actions improve maintainability and reduce code duplication.
 
-## Scalability
-- Parallel execution support
-- Reusable authentication state
-- Organized folder structure
-- Separated API and UI layers
+## Fixtures
 
-## Stability
-- Trace collection
-- Screenshot capture on failures
-- Video recording on failures
-- Stable locator strategies
+Reusable setup layers keep tests clean and scalable.
 
-## Debugging Efficiency
-- Playwright traces
-- Allure reporting
-- HTML execution reports
-- Failure analysis support
+## Authentication State Reuse
+
+Authentication is executed once and reused across tests to reduce execution time.
+
+## Utility Layer
+
+Reusable business logic is centralized in utility files.
 
 ---
 
-# Automation Skills
+# ⚡ Test Execution Commands
 
-## UI Automation
-- Playwright
-- End-to-End Testing
-- Cross-browser Testing
-- Regression Automation
+## Install Dependencies
 
-## API Automation
-- GET / POST / PUT / PATCH validation
-- Request & Response validation
-- Dynamic request payload handling
-- API workflow testing
+```bash
+npm install
+```
 
-## Framework Development
-- Page Object Model (POM)
-- Fixture-Based Architecture
-- Utility Abstraction
-- Authentication State Handling
-- Reusable Components
+## Run Full Regression Suite
 
-## CI/CD & Reporting
-- GitHub Actions
-- Allure Reports
-- Playwright HTML Reports
+```bash
+npm run regression
+```
+
+## Run UI Tests
+
+```bash
+npm run webTest
+```
+
+## Run API Tests
+
+```bash
+npm run apiTest
+```
+
+## Run Chromium Tests
+
+```bash
+npm run chromiumTest
+```
+
+## Run Safari / WebKit Tests
+
+```bash
+npm run safariTest
+```
+
+## Generate Allure Report
+
+```bash
+npm run allureGenerate
+```
+
+## Open Allure Report
+
+```bash
+npm run allureOpen
+```
 
 ---
 
-# Framework Design Decisions
+# 🧪 Test Execution
 
-Some important design choices used in the framework:
-
-- Authentication state reuse minimizes repeated login execution.
-- Fixtures help create reusable setup layers and cleaner test structure.
-- Utility functions centralize reusable business logic.
-- API and UI tests are separated for better maintainability.
-- Reporting integrations improve debugging and failure analysis.
-- Stable locator practices help reduce flaky test behavior.
-
----
-
-# Problems This Framework Solves
-
-- Reduces repetitive test setup effort
-- Improves test maintainability
-- Supports reusable automation workflows
-- Simplifies debugging using traces and reports
-- Organizes automation structure for scalability
-- Supports parallel execution for faster feedback
-
----
-
-## CI/CD with Jenkins
-
-![Jenkins Build Success](assets/screenshots/jenkins-success.png)
-
-Jenkins executes Playwright test suites and supports parameterized test runs.
-
-## Test Execution
+Playwright executes tests in parallel to provide faster feedback and reduce overall execution time.
 
 ![Playwright Test Execution](assets/screenshots/test-execution.png)
 
-35 automated UI tests executed successfully in parallel.
+---
+
+## CI/CD Pipeline
+
+### Jenkins Build Success
+
+![Jenkins Build](./assets/screenshots/jenkins-success.png)
+
+Jenkins pipeline is configured to:
+
+- Pull latest code from GitHub
+- Install project dependencies
+- Execute Playwright test suites
+- Generate Allure reports
+- Publish execution results
+- Provide fast feedback to the team
+
+### Jenkins Test Execution
+
+![Jenkins Test Execution](./assets/screenshots/jenkins-test-execution.png)
+
+Parameterized Jenkins jobs allow selective execution of:
+
+- Full Regression Suite
+- UI Automation Tests
+- API Automation Tests
+- Browser-specific executions
+
+Supported execution commands:
+
+```bash
+npm run regression
+npm run webTest
+npm run apiTest
+npm run chromiumTest
+npm run safariTest
+```
 
 ---
 
-# Reports Preview
+# 📊 Reporting
 
 ## Playwright HTML Report
 
-![Playwright Report](./assets/screenshots/playwright-report.png)
+Provides detailed execution insights, passed/failed test information, execution duration, and debugging support.
+
+![Playwright HTML Report](assets/screenshots/playwright-report.png)
+
+---
 
 ## Allure Report
 
-![Allure Report](./assets/screenshots/allure-report.png)
+Provides advanced reporting with trends, execution history, detailed failure analysis, screenshots, and traces.
+
+![Allure Report](assets/screenshots/allure-report.png)
 
 ---
 
-# Current Learning & Engineering Goals
+# 🎯 Framework Highlights
 
-I’m actively strengthening my capabilities in:
-- Advanced Playwright architecture
-- API framework design
-- Scalable automation patterns
-- CI/CD automation workflows
-- Modern SDET engineering practices
-
-Long-term focus areas include:
-- Docker-based execution
-- Cloud execution platforms
-- Advanced API validation
-- Performance-focused automation workflows
-
----
-
-# Career Direction
-
-I’m interested in remote SDET and QA Automation Engineering opportunities where I can contribute to:
-- scalable automation systems
-- quality-focused engineering culture
-- maintainable testing architecture
-- automation strategy and framework design
-
-I particularly enjoy solving problems related to:
-- framework maintainability
-- debugging efficiency
-- reusable automation patterns
-- execution optimization
+* UI + API Automation
+* Page Object Model Architecture
+* Fixture-Based Design
+* Authentication State Reuse
+* Parallel Execution
+* Chromium Browser Support
+* Safari/WebKit Browser Support
+* Jenkins Integration
+* Allure Reporting
+* Playwright HTML Reporting
+* Screenshot Capture
+* Trace Collection
+* Scalable Folder Structure
 
 ---
 
-# Featured Repository
+# 🔍 Problems Solved
 
-## Playwright API + UI Automation Framework
+* Reduces repetitive login execution
+* Improves framework maintainability
+* Supports reusable automation components
+* Simplifies debugging and failure analysis
+* Enables faster execution through parallel testing
+* Supports CI/CD quality workflows
+* Improves visibility through reporting
 
-Features:
-- UI + API Automation
-- Reusable Fixtures
-- POM Architecture
-- GitHub Actions CI/CD
-- Allure Reporting
-- Parallel Execution
-- Failure Traces & Videos
 
-🔗 Repository:
+---
+
+# 🔗 Repository
+
 https://github.com/nankita245/Playwright-API-UI-Framework
 
 ---
 
-# Connect With Me
-
-## LinkedIn
-https://www.linkedin.com/in/ankita-nagotia-3354a0227/
-
-## GitHub
-https://github.com/nankita245
-
----
-
-# Philosophy
-
-Good automation is not just about automating test cases.
-
-It’s about building maintainable systems that:
-- improve release confidence
-- reduce engineering friction
-- support faster delivery
-- help teams scale quality efficiently
+⭐ If you find this framework useful, consider starring the repository.
