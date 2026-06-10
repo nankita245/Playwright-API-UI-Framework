@@ -10,8 +10,8 @@
     "apiTest": "npx playwright test --grep @APItest",
     "allureGenerate": "rm -rf allure-report && allure generate allure-results --output allure-report",
     "allureOpen": "allure open ./allure-report",
-    "safariTest" : "npx playwright test --config playwright.config1.js --project=webkit",
-    "chromiumTest" : "npx playwright test --config playwright.config.js --project=chromium"
+    "safariTest" : "npx playwright test --project=webkit",
+    "chromiumTest" : "npx playwright test --project=chromium"
 
   },
   "keywords": [],

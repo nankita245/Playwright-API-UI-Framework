@@ -16,9 +16,6 @@ export default defineConfig({
   ],
   use: {
     headless: false,              // change to true for CI runs
-   // viewport: { width: 1280, height: 720 },
-   // ignoreHTTPSErrors: true,
-    //video: 'retain-on-failure',   // record video on test d
     screenshot: 'on',
     trace : 'retain-on-failure', // record trace on test failure
     //actionTimeout: 10000,         // max time for each action
@@ -33,6 +30,16 @@ export default defineConfig({
   },
 
   {
+    name: 'chromium',
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: 'playwright/.auth/user.json',
+    },
+
+    dependencies: ['setup'],
+  },
+
+  {
   name: 'webkit',
   use: {
     ...devices['Desktop Safari'],
@@ -40,27 +47,6 @@ export default defineConfig({
   },
   dependencies: ['setup'],
 },
-    
 ],
-  // {
-  //   name: 'chromium',
-  //   use: {
-  //     ...devices['Desktop Chrome'],
-  //     storageState: 'playwright/.auth/user.json',
-  //   },
 
-  //   dependencies: ['setup'],
-  // },
-//],
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-    
-  
-  // // Optional: retries on CI
-  // retries: process.env.CI ? 2 : 0,
-  // // Optional: run tests in parallel
-  // workers: process.env.CI ? 1 : undefined,
 });
