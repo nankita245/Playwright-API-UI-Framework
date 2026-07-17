@@ -13,7 +13,7 @@ A production-grade, scalable test automation framework built with **Playwright**
  
 ## 📌 What Is This Framework Testing?
  
-This framework automates the **Sauce Demo e-commerce application** — a standard SDET benchmark app covering real-world user workflows including login, product browsing, cart management, and checkout. It demonstrates production-ready automation patterns applicable to any web + API stack.
+This framework automates the **Sauce Demo e-commerce application** and **Restful Booker API** for API validation. It covers key end-to-end user workflows such as authentication, product browsing, cart management, and checkout, along with API operations including booking creation, retrieval, update, and deletion. The framework demonstrates production-ready automation practices, reusable design patterns, and scalable architecture that can be applied across modern web and API testing projects. 
  
 **Automated Coverage:**
 - 🔐 Authentication flows (valid/invalid login, session reuse)
@@ -112,29 +112,32 @@ Each page is encapsulated in its own class with locators and action methods — 
  
 ```javascript
 // pages/loginPage.js
-class LoginPage {
-  constructor(page) {
-    this.page = page;
-    this.usernameInput = page.locator('[data-test="username"]');
-    this.passwordInput = page.locator('[data-test="password"]');
-    this.loginButton   = page.locator('[data-test="login-button"]');
-    this.errorMessage  = page.locator('[data-test="error"]');
-  }
- 
-  async login(username, password) {
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
-  }
- 
-  async getErrorMessage() {
-    return this.errorMessage.textContent();
-  }
+export class LoginPage{
+
+    constructor(page){
+        this.page = page
+        this.userName = page.getByPlaceholder('Username')
+        this.password = page.getByPlaceholder('Password')
+        this.submitLoginButton = page.getByRole('button',{name:'Login'})
+
+    }
+
+    async navigateToUrl()
+    {
+        await this.page.goto('/')
+    }
+
+    async loginToApplication(username,password)
+    {
+        await this.userName.fill(username)
+        await this.password.fill(password)
+        await this.submitLoginButton.click()
+    }
+
+    async navigateToInventoryPage() {
+   await this.page.goto('/inventory.html')}
 }
- 
-module.exports = { LoginPage };
 ```
- 
 ---
  
 ### Fixture-Based Setup
@@ -143,20 +146,26 @@ Custom fixtures wire all page objects together, injecting them into any test tha
  
 ```javascript
 // fixtures/pages.fixture.js
-const { test: base } = require('@playwright/test');
-const { LoginPage }  = require('../pages/loginPage');
-const { ProductsPage } = require('../pages/productsPage');
- 
-const test = base.extend({
-  loginPage: async ({ page }, use) => {
-    await use(new LoginPage(page));
-  },
-  productsPage: async ({ page }, use) => {
-    await use(new ProductsPage(page));
-  },
-});
- 
-module.exports = { test };
+import { LoginPage } from "../pages/loginPage"
+import { ProductsPage } from "../pages/productsPage"
+import {test as base, expect} from "@playwright/test"
+
+export const test = 
+base.extend({ 
+    
+    loginPage: async ({ page }, use) => {
+    const loginPage = new LoginPage(page)
+     await use(loginPage)
+     },
+    
+    productsPage: async({page}, use) =>{
+        const productsPage = new ProductsPage(page)
+        await use(productsPage)
+    }
+    } 
+)
+    export { expect }
+
 ```
  
 ---
@@ -167,25 +176,23 @@ Login runs **once** during setup and the session cookie is saved to disk. All su
  
 ```javascript
 // tests/auth/auth.setup.js
-const { test: setup } = require('@playwright/test');
- 
+import { test as setup, expect } from '@playwright/test';
+
 setup('authenticate', async ({ page }) => {
-  await page.goto('/');
-  await page.fill('[data-test="username"]', process.env.TEST_USER);
-  await page.fill('[data-test="password"]', process.env.TEST_PASS);
-  await page.click('[data-test="login-button"]');
-  await page.waitForURL('**/inventory.html');
- 
-  // Save session to disk — reused by all UI tests
-  await page.context().storageState({ path: 'playwright/.auth/user.json' });
+
+  await page.goto('https://www.saucedemo.com/');
+
+  await page.getByPlaceholder('Username').fill('standard_user');
+  await page.getByPlaceholder('Password').fill('secret_sauce');
+
+  await page.getByRole('button', { name: 'Login' }).click();
+
+  await expect(page).toHaveURL(/inventory/);
+
+  await page.context().storageState({
+    path: 'playwright/.auth/user.json'
+  });
 });
-```
- 
-```javascript
-// playwright.config.js (snippet)
-use: {
-  storageState: 'playwright/.auth/user.json', // ← loaded by every test automatically
-},
 ```
  
 ---
@@ -196,29 +203,37 @@ API tests are written using Playwright's built-in `request` context — no extra
  
 ```javascript
 // tests/APIAutomation/users.spec.js
-const { test, expect } = require('@playwright/test');
- 
-test('POST /users — should create a new user', async ({ request }) => {
-  const response = await request.post('https://reqres.in/api/users', {
-    data: { name: 'Jane Doe', job: 'SDET' }
-  });
- 
-  expect(response.status()).toBe(201);
- 
-  const body = await response.json();
-  expect(body).toHaveProperty('id');
-  expect(body.name).toBe('Jane Doe');
-  expect(body.job).toBe('SDET');
-});
- 
-test('GET /users — should return paginated user list', async ({ request }) => {
-  const response = await request.get('https://reqres.in/api/users?page=1');
- 
-  expect(response.status()).toBe(200);
-  const body = await response.json();
-  expect(body.data.length).toBeGreaterThan(0);
-  expect(body).toHaveProperty('total');
-});
+import {test,expect} from '@playwright/test'
+import { generateBookingData } from '../../utils/randomDataGenerator.js'
+
+test('@APItest Test Post api request using Dynamic request body',async ({page,request})=>
+
+{
+    const bookingData = generateBookingData()
+
+    const postApiResponse = await request.post('https://restful-booker.herokuapp.com/booking',
+
+     { data: bookingData}
+    )
+
+    const postAPIResponseBody = await postApiResponse.json()
+    console.log(postAPIResponseBody)
+
+  // validate status code
+     await expect(postApiResponse.ok()).toBeTruthy()
+     await expect(postApiResponse.status()).toBe(200)
+
+   //validate json API response
+     await expect(postAPIResponseBody.booking).toHaveProperty("firstname" , bookingData.firstname)
+     await expect(postAPIResponseBody.booking).toHaveProperty("lastname" , bookingData.lastname)
+
+    // validate nested json object
+    await expect(postAPIResponseBody.booking.bookingdates).toHaveProperty( "checkin" , bookingData.bookingdates.checkin) 
+    await expect(postAPIResponseBody.booking.bookingdates).toHaveProperty( "checkout" , bookingData.bookingdates.checkout) 
+    
+}
+)
+
 ```
  
 ---
@@ -229,25 +244,46 @@ Reusable helpers keep test logic clean and avoid magic values scattered across f
  
 ```javascript
 // utils/randomDataGenerator.js
-const { faker } = require('@faker-js/faker');
- 
-const generateCheckoutData = () => ({
-  firstName: faker.person.firstName(),
-  lastName:  faker.person.lastName(),
-  zipCode:   faker.location.zipCode(),
-});
- 
-module.exports = { generateCheckoutData };
+import { faker } from '@faker-js/faker'
+import { DateTime } from 'luxon'
+
+export function generateBookingData() {
+    const checkin = DateTime.now().toFormat('yyyy-MM-dd');
+    const checkout = DateTime.now().plus({ days: 5 }).toFormat('yyyy-MM-dd');
+    return {
+        firstname: faker.person.firstName(),
+        lastname: faker.person.lastName(),
+        totalprice: faker.number.int({ min: 100, max: 1000 }),
+        depositpaid: true,
+        bookingdates: {
+      checkin,
+      checkout
+    }
+    }
+}
 ```
- 
 ```javascript
 // utils/priceUtils.js
-const calculateExpectedTotal = (prices, taxRate = 0.08) => {
-  const subtotal = prices.reduce((sum, p) => sum + p, 0);
-  return parseFloat((subtotal + subtotal * taxRate).toFixed(2));
-};
- 
-module.exports = { calculateExpectedTotal };
+export function convertPriceTextToNumber(priceText) {
+
+    return Number(
+        parseFloat(priceText.replace('$', '')).toFixed(2)
+    );
+}
+
+export function calculateTotalPrice(prices) {
+
+    return Number(
+        prices.reduce((total, price) => total + price, 0).toFixed(2)
+    );
+}
+
+export function calculateFinalPrice(itemTotal, tax) {
+
+    return Number(
+        (itemTotal + tax).toFixed(2)
+    );
+}
 ```
  
 ---
