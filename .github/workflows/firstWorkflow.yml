@@ -2,3 +2,13 @@ name: first Workflow
 
 # To get trigger on every push in this repo in any branch
 on: push
+
+jobs:
+ job1 : 
+ name : job1
+ runs-on : ubuntu-latest
+ steps: 
+      name: Running single command in job1
+      run: "Hi this is my 1st GitHub workflow"
+      name: Running another command
+      run: "Hi This is 2nd command"
