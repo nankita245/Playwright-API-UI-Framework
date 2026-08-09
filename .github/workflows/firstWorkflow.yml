@@ -9,7 +9,7 @@ jobs:
    runs-on: ubuntu-latest
    steps: 
      - name: Running a single command in job1
-      run: echo "Hi, this is my 1st GitHub workflow"
+       run: echo "Hi, this is my 1st GitHub workflow"
       
      - name: Running another command
-      run: echo "Hi, this is the 2nd command"
+       run: echo "Hi, this is the 2nd command"
