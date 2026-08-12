@@ -15,8 +15,8 @@ export default defineConfig({
     ['allure-playwright']
   ],
   use: {
-    headless: !process.env.CI, //for CI runs, set headless to true
-    //headless: false,              // change to true for CI runs
+    //headless: !process.env.CI, //for CI runs, set headless to true
+    headless: true,              // change to true for CI runs
     screenshot: 'on',
     trace : 'retain-on-failure', // record trace on test failure
     //actionTimeout: 10000,         // max time for each action
