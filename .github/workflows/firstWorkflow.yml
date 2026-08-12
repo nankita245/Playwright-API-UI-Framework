@@ -1,27 +1,31 @@
-name: first Workflow
+name: Playwright Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
   pull_request:
-    branches:
-      - main
-
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
-  job1:
-    name: job1
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Node version
-        run: node --version
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-      - name: Print npm version
-        run: npm --version
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Print message
-        run: echo "My first GitHub Actions CI pipeline"
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
