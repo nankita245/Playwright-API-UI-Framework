@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_URL: https://www.saucedemo.com
-      TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+      QA_USERNAME: ${{ secrets.QA_USERNAME }}
+      QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
       
     steps:
     - uses: actions/checkout@v4
