@@ -8,6 +8,9 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: https://www.saucedemo.com
+      
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -19,6 +22,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    - name: Print base URL
+      run: echo "Running tests against $BASE_URL"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
