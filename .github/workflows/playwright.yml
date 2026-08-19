@@ -47,7 +47,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium
 
       - name: Show environment
         run: echo "Running tests against $BASE_URL"
