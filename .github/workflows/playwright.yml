@@ -20,6 +20,11 @@ on:
           - qa
           - staging
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -27,37 +32,37 @@ jobs:
     environment: ${{ inputs.environment || 'dev' }}
 
     steps:
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Checkout repository
-      # --------------------------------------------------
+      # ---------------------------------------------
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Setup Node.js
-      # --------------------------------------------------
+      # ---------------------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      # --------------------------------------------------
-      # Install project dependencies
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Install dependencies
+      # ---------------------------------------------
       - name: Install dependencies
         run: npm ci
 
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Install Playwright browsers
-      # Chromium + WebKit required for browser projects
-      # --------------------------------------------------
+      # Chromium + WebKit
+      # ---------------------------------------------
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium webkit
 
-      # --------------------------------------------------
-      # Display versions for debugging
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Display versions
+      # ---------------------------------------------
       - name: Display versions
         run: |
           node --version
@@ -65,11 +70,10 @@ jobs:
           npx playwright --version
           npx allure --version
 
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Run Playwright tests
-      # --------------------------------------------------
+      # ---------------------------------------------
       - name: Run Playwright Tests
-        id: playwright-tests
         env:
           BASE_URL: ${{ vars.BASE_URL }}
           API_BASE_URL: ${{ vars.API_BASE_URL }}
@@ -77,19 +81,20 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
         run: npx playwright test
 
-      # --------------------------------------------------
-      # Generate Allure HTML report
-      # Runs even if Playwright tests fail
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Generate Allure report
+      # Runs even if tests fail
+      # ---------------------------------------------
       - name: Generate Allure Report
         if: always()
         run: |
           rm -rf allure-report
           npx allure generate --output allure-report allure-results
 
-      # --------------------------------------------------
-      # Upload Allure HTML report
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Upload Allure report as artifact
+      # Backup/download option
+      # ---------------------------------------------
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -98,20 +103,9 @@ jobs:
           path: allure-report/
           if-no-files-found: warn
 
-      # --------------------------------------------------
-      # Upload raw Allure results
-      # --------------------------------------------------
-      - name: Upload Allure Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results/
-          if-no-files-found: warn
-
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Upload Playwright HTML report
-      # --------------------------------------------------
+      # ---------------------------------------------
       - name: Upload Playwright Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -120,16 +114,52 @@ jobs:
           path: playwright-report/
           if-no-files-found: warn
 
-      # --------------------------------------------------
-      # Upload test artifacts
-      # Screenshots, videos and traces
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Upload screenshots/videos/traces
+      # ---------------------------------------------
       - name: Upload Test Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-test-artifacts
-          path: |
-            test-results/
-            playwright-report/
+          path: test-results/
           if-no-files-found: warn
+
+      # ---------------------------------------------
+      # Prepare GitHub Pages
+      # ---------------------------------------------
+      - name: Setup GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      # ---------------------------------------------
+      # Upload Allure report for GitHub Pages
+      # ---------------------------------------------
+      - name: Upload Pages Artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report/
+
+  # =================================================
+  # Deploy Allure report to GitHub Pages
+  # =================================================
+  deploy:
+    if: always()
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
